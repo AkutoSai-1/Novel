@@ -1,3 +1,4 @@
+https://akutosai-1.github.io/Novel/
 <br>
 <br>
 https://github.com/AkutoSai-1/Novel.git
