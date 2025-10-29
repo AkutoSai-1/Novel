@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>EPUB Viewer with Zoom</title>
 
-    <!-- Add Readium Web CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/readium-js@2.0.0/dist/readium.min.js"></script>
+    <!-- Add BookReader.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bookreader@1.1.0/bookreader.min.js"></script>
 
     <style>
       #viewer {
@@ -68,17 +68,14 @@
           reader.onload = function (e) {
             var arrayBuffer = e.target.result;
 
-            // Initialize Readium
-            var readium = new Readium();
+            // Open EPUB with BookReader.js
+            var bookReader = new BookReader(arrayBuffer);
 
-            // Open and render EPUB
-            readium.open(arrayBuffer, function (book) {
-              // Render EPUB into the #viewer div
-              book.renderTo("viewer");
+            // Render the EPUB file in the #viewer div
+            bookReader.renderTo("viewer");
 
-              // Enable zoom after the EPUB is loaded
-              enableImageZoom();
-            });
+            // Enable zooming after EPUB is loaded
+            enableImageZoom();
           };
           reader.readAsArrayBuffer(file);
         });
